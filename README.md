@@ -19,7 +19,7 @@ GOOD LUCK & HAPPY CODING 🚀
 # IMPORTANT NOTICE
 
 ```
-1 - YOU NEED TO CREATE A .ENV FILE (SEE EXAMPLE FILE .example-env)
+1 - YOU NEED TO CREATE A .env FILE (SEE EXAMPLE FILE .example-env)
 
 
 2 - YOU WILL NEED TO ADD A KEY CALLED PRIVATE_KEYS
@@ -41,7 +41,7 @@ https://www.youtube.com/watch?v=CgXQC4dbGUE&t=78s&ab_channel=DappUniversity
 This project requires that you use yarn instead of npm commands
 If you use npm commands the dependencies will fail to install correctly
 
-1- Intsall yarn globally:
+1- Install yarn globally:
 npm install --global yarn
 
 2- Install project dependencies:
