@@ -3,10 +3,13 @@
 # INTRODUCTION
 
 ```
+SEE THE VIDEO WALKTHROUGH OF THIS BOILERPLATE HERE:
+https://youtu.be/F0xD1DK3pe4
+
 SEE BLOG POST WHICH THIS CODE WAS WRITTEN FOR:
 https://medium.com/coinmonks/guide-to-creating-your-own-nft-with-javascript-solidity-part-1-of-3-7909b80fae94
 
-SEE THE REAL WORLD PROJECT I CRETAED USING THE LOGIC FROM MY BLOG POST HERE:
+SEE THE REAL WORLD PROJECT I CREATED USING THE LOGIC FROM MY BLOG POST HERE:
 https://cryptoghoulz.com
 
 
@@ -79,5 +82,22 @@ truffle migrate --reset --network rinkeby
 
 3 - RUN MINT SCRIPT ON A SPECIFIC NETWORK (IN THIS EXAMPLE RINKEBY)
 truffle exec src/utils/mint.js --network rinkeby
+
+```
+
+# HELPFUL LINKS
+
+```
+CREATE BASE64 IMAGE ONLINE
+https://elmah.io/tools/base64-image-encoder/
+
+INFURA
+https://www.infura.io/
+
+IPFS
+https://docs.ipfs.tech/concepts/how-ipfs-works/
+
+WEB3 JS
+https://web3js.readthedocs.io/en/v1.8.1/
 
 ```

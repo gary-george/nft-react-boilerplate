@@ -1,43 +1,58 @@
 /* eslint-disable */
 const { create } = require("ipfs-http-client");
 
+const projectId = "2JHCn7JUrQtanDa584yDLm1WSiW"; // <---------- your Infura Project ID
+const projectSecret = "82bf8b0040105b7819d5b7c48583fef3"; // <---------- your Infura Secret
+
+const auth =
+  "Basic " + Buffer.from(projectId + ":" + projectSecret).toString("base64");
+
 const client = create({
   host: "ipfs.infura.io",
   port: 5001,
   protocol: "https",
-  path: "api/v0",
+  headers: {
+    authorization: auth,
+  },
 });
 
-// THIS FUNCTION MUST BE CALLED WITH YOUR IMAGE 'FILE' BEING PASSED IN AS AN ARGUMENT
-// I SUGGEST PASSING IN A BLOB OF THE FILE OR A DATA URI OBJECT OF AN IMAGE
-export const uploadFileToIPFS = async (file) => {
+// THIS FUNCTION REQURIES A BASE64 IMAGE TO BE PASSED IN. ( BETTER TO SEND AN IMAGE BUFFER IN PRODUCTION )
+const uploadFileToIPFS = async (file) => {
   try {
-    //1 ADD File to IPFS
+    //1 ADD IMAGE File to IPFS
     const url = await client.add(file);
-    const uploadedImageUrl = `https://ipfs.infura.io/ipfs/${url?.path}`;
+    const uploadedImageUrl = `https://ipfs.io/ipfs/${url?.path}`;
 
-    //2 ADD Metadata to IPFS
+    //2 ADD Metadata File to IPFS
     const metadata = {
-      name: "example name",
-      description: "example description",
+      name: "Boilerplate example name",
+      description: "Boilerplate example description",
       image: uploadedImageUrl,
     };
     const metadataRes = await client.add(JSON.stringify(metadata));
-    const metaDataUrl = `https://ipfs.infura.io/ipfs/${metadataRes?.path}`;
+    const metaDataUrl = `https://ipfs.io/ipfs/${metadataRes?.path}`;
 
-    // IF YOU WISH TO PIN YOUR FILE HERE IS THE COMMAND
-    // YOU WILL NEED TO ADD AN AUTH HEADER TO YOUR REQUEST IN ORDER TO PIN USING INFURA
-    // AT TIME OF WRITING THIS (Sept 2021) THERE IS A BUG FOR USING PIN COMMAND FROM THE FRONT END
-    //await client.pin.add(metadataRes?.path);
-
-    //3 return image & metadata URLs and also the CID for each
-    return {
+    //3 Return image & metadata URLs and also the CID for each
+    const ipfsData = {
       uploadedImageUrl,
       metaDataUrl,
       metaDataHashCID: metadataRes?.path,
       imageHashCID: url?.path,
     };
+
+    console.log(ipfsData);
+    return ipfsData;
   } catch (e) {
-    console.log("error uplaoding to IPFS", e);
+    console.log("error uploading to IPFS", e);
   }
 };
+
+//*
+// This block allows us to call the IPFS function with a base64 string ... to demostrate manually how it works
+(async () => {
+  const YOUR_BASE_64 = "";
+  const exampleBase64 = `data:image/jpeg;base64,${YOUR_BASE_64}`;
+
+  await uploadFileToIPFS(exampleBase64);
+})();
+// */
