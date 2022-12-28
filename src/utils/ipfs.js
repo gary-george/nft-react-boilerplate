@@ -1,8 +1,8 @@
 /* eslint-disable */
 const { create } = require("ipfs-http-client");
 
-const projectId = "2JHCn7JUrQtanDa584yDLm1WSiW"; // <---------- your Infura Project ID
-const projectSecret = "82bf8b0040105b7819d5b7c48583fef3"; // <---------- your Infura Secret
+const projectId = "YOUR_INFURA_IPFS_PROJECT_ID";
+const projectSecret = "YOUR_INFURA_IPFS_PROJECT_SECRET";
 
 const auth =
   "Basic " + Buffer.from(projectId + ":" + projectSecret).toString("base64");
